@@ -5,7 +5,7 @@
     "username": "yecong",
     "password": "123456",
     "database": "koa",
-    "synchronize": true,
+    "synchronize": false,
     "entities": ["src/db/*.ts"],
     "cli": {
         "entitiesDir": "src/db"
