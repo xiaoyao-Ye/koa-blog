@@ -17,10 +17,10 @@ export class Article {
   @Column({ default: '' })
   desc: string;
 
-  @Column({ default: '', select: false })
+  @Column({ default: new Date().toDateString(), select: false })
   createDate: string;
 
-  @Column({ default: '' })
+  @Column({ default: new Date().toDateString() })
   date: string;
 
   @Column({ default: 0 })
