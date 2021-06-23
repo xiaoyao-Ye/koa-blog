@@ -14,14 +14,13 @@ export class User {
   @Column({ default: '' })
   email: string;
 
+  @Column({ default: new Date(2000, 0, 1).toString() })
+  birthday: string;
+
   @Column({ default: '' })
   avatar: string;
+
+  @Column({ default: new Date().toString() })
+  createDateTime: string;
 }
 
-// user// id, 账号,密码,邮箱,  头像,说明,
-// article// id,标题,时间,内容,描述,评论(评论时间,评论名称,评论内容,评论目标,回复目标),点赞,浏览量,
-
-
-// 用户: 注册(add),登录,list, details,edit PWD(修改pic,**签名等),
-// article新增,修改,删除,列表,详情,
-//

@@ -34,6 +34,15 @@ export default class ArticleController {
 
   }
 
+  public static async articleDetails(ctx: Context) {
+    // 根据id取详情,每成功调用一次,readCount++;
+    // 查文章评论表,过滤当前文章id的,得到浏览量
+    // 查文章点赞表,过滤当前文章id的,得到点赞量
+    const {id} = ctx.request.body;
+    !id && result(ctx, null, '404: 没有这条记录!');
+
+  }
+
   public static async articleUpdate(ctx: Context) {
     const repository = getManager().getRepository(Article)
     const { id, title, content } = ctx.request.body
