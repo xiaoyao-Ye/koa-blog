@@ -1,4 +1,4 @@
-import { Context } from "koa";
+import { Ctx } from "../config";
 
 const msgList: any = {
   200: '成功!',
@@ -23,7 +23,7 @@ export function resData(data: any) {
  * @param err 错误消息
  * @param cb 回调函数
  */
-export function result(ctx: Context, data: any, err?: string, cb?: Function) {
+export function result(ctx: Ctx, data: any, err?: string, cb?: Function) {
   if (!data) {
     ctx.body = resErr(450, err)
   } else {
@@ -33,7 +33,7 @@ export function result(ctx: Context, data: any, err?: string, cb?: Function) {
 }
 
 // response中间件
-export const formatResult = async (ctx: Context, next: any) => {
+export const formatResult = async (ctx: Ctx, next: any) => {
   try {
 
     await next();

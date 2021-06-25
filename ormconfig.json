@@ -2,10 +2,10 @@
     "type": "mysql",
     "host": "localhost",
     "port": 3306,
-    "username": "yecong",
-    "password": "123456",
-    "database": "koa",
-    "synchronize": false,
+    "username": "YQCyecong",
+    "password": "YQCyecong0514",
+    "database": "yeyaoyao.icu",
+    "synchronize": true,
     "entities": ["src/db/*.ts"],
     "cli": {
         "entitiesDir": "src/db"

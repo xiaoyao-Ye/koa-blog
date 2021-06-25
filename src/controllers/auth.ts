@@ -1,4 +1,4 @@
-import { Context } from 'koa';
+import { Ctx } from '../config/index';
 import { getManager } from 'typeorm';
 import { User } from '../db/user'
 import * as argon2 from 'argon2';
@@ -12,7 +12,7 @@ export default class AuthController {
    * @param account: 登录账号
    * @param password: 登录密码
    */
-  public static async login(ctx: Context) {
+  public static async login(ctx: Ctx) {
     const userRepository = getManager().getRepository(User);
     const { account, password } = ctx.request.body;
 
@@ -33,7 +33,7 @@ export default class AuthController {
     }
   }
 
-  public static async register(ctx: Context) {
+  public static async register(ctx: Ctx) {
     const userRepository = getManager().getRepository(User)
     const { account, password, email } = ctx.request.body;
     const user = await userRepository

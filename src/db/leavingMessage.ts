@@ -6,8 +6,14 @@ export class leavingMessage {
   id: number;
 
   @Column()
-  userId: string;
+  userId: number;
+
+  @Column()
+  userName: string;
 
   @Column()
   content: string;
+
+  @Column()
+  createdTime: string;
 }

@@ -1,7 +1,7 @@
-import { Context } from 'koa';
+import { Ctx } from '../config/index';
 
 export function logger() {
-  return async (ctx: Context, next: () => Promise<void>) => {
+  return async (ctx: Ctx, next: () => Promise<void>) => {
     const start = Date.now();
     await next();
     const ms = Date.now() - start;

@@ -1,10 +1,10 @@
-import { Context } from 'koa';
+import { Ctx } from '../config/index';
 import { getManager } from 'typeorm';
 import { Article } from '../db/article'
 import { result } from '../middleware/formatResult';
 
 export default class ArticleController {
-  public static async articleAdd(ctx: Context) {
+  public static async articleAdd(ctx: Ctx) {
     const repository = getManager().getRepository(Article)
     const { title, content } = ctx.request.body
     const article = new Article()
@@ -14,7 +14,7 @@ export default class ArticleController {
     result(ctx, {})
   }
 
-  public static async articleList(ctx: Context) {
+  public static async articleList(ctx: Ctx) {
     const repository = getManager().getRepository(Article)
     const { pageSize = 10, pageNum = 1 } = ctx.request.body
     const listCount = await repository.findAndCount({
@@ -34,7 +34,7 @@ export default class ArticleController {
 
   }
 
-  public static async articleDetails(ctx: Context) {
+  public static async articleDetails(ctx: Ctx) {
     // 根据id取详情,每成功调用一次,readCount++;
     // 查文章评论表,过滤当前文章id的,得到浏览量
     // 查文章点赞表,过滤当前文章id的,得到点赞量
@@ -43,7 +43,7 @@ export default class ArticleController {
 
   }
 
-  public static async articleUpdate(ctx: Context) {
+  public static async articleUpdate(ctx: Ctx) {
     const repository = getManager().getRepository(Article)
     const { id, title, content } = ctx.request.body
     if (!id) return result(ctx, null, '文章id不能为空')
@@ -55,7 +55,7 @@ export default class ArticleController {
     result(ctx, edit, '修改失败了,稍后试试!')
   }
 
-  public static async articleDelete(ctx: Context) {
+  public static async articleDelete(ctx: Ctx) {
     const repository = getManager().getRepository(Article)
     const { id } = ctx.request.body
     const isExist = await repository.createQueryBuilder().where({ id }).getOne();
