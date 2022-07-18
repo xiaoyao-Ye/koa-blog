@@ -14,13 +14,12 @@ export class User {
   @Column({ default: '' })
   email: string;
 
-  @Column({ default: new Date(2000, 0, 1).toString() })
+  @Column({ default: '1999-9-9 00:00:00' })
   birthday: string;
 
   @Column({ default: '' })
   avatar: string;
 
-  @Column({ default: new Date().toString() })
+  @Column({ default: '' })
   createDateTime: string;
 }
-
